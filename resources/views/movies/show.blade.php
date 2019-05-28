@@ -4,6 +4,7 @@
 
 <h1>Movie title: {{$movie->title}}</h1>
 <h3>director: {{$movie->director}}</h3>
+<a href="/genres/{{$movie->genre}}" class="link">{{$movie->genre}}</a>
 <h3>year: {{$movie->year}}</h3>
 <h4>storyline: {{$movie->storyline}}</h4>
 
@@ -13,7 +14,7 @@
         @foreach ($movie->comments as $comment)
             <li>
                 <p class="comment">
-                    Author: {{$comment->content}}
+                    Author: {{$comment->content}}   
                 </p>
                 <p>
                     {{$comment->created_at}}
@@ -31,6 +32,7 @@
     <div class="form-group">
         <label for="content">Content</label>
         <textarea class="form-control" id="content" name="content"></textarea>
+        @include ('partials.error-massage', ['fieldTitle' => 'content'])
     </div>
 
     <div class="form-group">
