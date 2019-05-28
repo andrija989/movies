@@ -17,9 +17,10 @@ class CreateMoviesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('genre');
-            $table->string('director');
+            $table->string('director')->default('0');
             $table->integer('year');
             $table->text('storyline');
+            $table->timestamps();
             
         });
     }

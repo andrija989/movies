@@ -15,8 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/movies/create',['as'=>'create-movie','uses'=>'MoviesController@create']);
+
+Route::post('/movies', ['as'=> 'store-movie', 'uses'=>'MoviesController@store']);
+
 Route::get('/movies', ['as' => 'movies-list','uses'=>'MoviesController@index']);
 
 Route::get('/movies/{id}',['as'=>'movie-single','uses'=>'MoviesController@show']);
+
 
 
