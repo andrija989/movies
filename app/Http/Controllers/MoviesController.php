@@ -10,6 +10,7 @@ class MoviesController extends Controller
     public function index() {
 
         $movies = Movie::all();
+        $side = Movie::all()->limit(5);
 
         return view('movies.index',compact('movies'));
     }
