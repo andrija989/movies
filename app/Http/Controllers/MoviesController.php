@@ -10,21 +10,23 @@ class MoviesController extends Controller
     public function index() {
 
         $movies = Movie::all();
-        $side = Movie::all()->limit(5);
+        $sideBars = Movie::orderBy('id', 'desc')->take(5)->get();
 
-        return view('movies.index',compact('movies'));
+        return view('movies.index',compact('movies','sideBars'));
     }
 
     public function show($id) {
 
         $movie = Movie::with('comments')->find($id);
+        $sideBars = Movie::orderBy('id', 'desc')->take(5)->get();
 
-        return view('/movies.show',compact('movie'));
+        return view('/movies.show',compact('movie','sideBars'));
     }
 
     public function create() {
         
-        return view('/movies.create');
+        $sideBars = Movie::orderBy('id', 'desc')->take(5)->get();
+        return view('/movies.create',compact('sideBars'));
 
     }
 
